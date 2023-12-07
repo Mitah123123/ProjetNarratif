@@ -9,6 +9,7 @@ namespace ProjetNarratif.Rooms
         internal override string CreateDescription() =>
 @"Tu décides de faire à [manger].
 Tu décides de partir [travailler].
+Ta fille te pose une [devinette].
 ";
         internal override void ReceiveChoice(string choice)
         {
@@ -45,7 +46,11 @@ Tu décides de partir [travailler].
                     {
                         Console.WriteLine("Je dois faire à manger pour tout le monde.");
                     }
-                break;
+                    break;
+
+                case "devinette":
+                    Game.Transition<Devinette>();
+                    break;
             }
 
         }

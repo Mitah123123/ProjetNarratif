@@ -12,6 +12,7 @@ game.Add(new salon());
 game.Add(new Cuisine());
 game.Add(new Retourmaison());
 game.Add(new Retourmaisondeux());
+game.Add(new Devinette());
 
 
 while (!game.IsGameOver())
