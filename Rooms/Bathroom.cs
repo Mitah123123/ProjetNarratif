@@ -3,25 +3,30 @@
     internal class Bathroom : Room
     {
         internal override string CreateDescription() =>
-@"Dans la toilette, le [bain] est rempli d'eau chaude.
-Le [miroir] devant toi affiche ton visage déprimé.
-Tu peux revenir dans ta [chambre].
+@"Tu décides de te regarder dans le [miroir].
+Tu décides de te [raser].
+Tu décides de retourner dans la [chambre].
 ";
-
         internal override void ReceiveChoice(string choice)
         {
             switch (choice)
             {
-                case "bain":
-                    Console.WriteLine("Tu te laisses relaxer dans le bain.");
-                    break;
                 case "miroir":
-                    Console.WriteLine("Tu aperçois les chiffres 2314 écrits sur la brume sur le miroir.");
+                    {
+                        Console.WriteLine("On voit juste notre visage fatigué\n" +
+                            "moi: Bordel, quel cauchemar de merde.");
+                    }
                     break;
+                case "raser":
+                    {
+                        Console.WriteLine("Tu te rases la barbe.");
+                    }break;
+
                 case "chambre":
                     Console.WriteLine("Tu retournes dans ta chambre.");
                     Game.Transition<Bedroom>();
                     break;
+
                 default:
                     Console.WriteLine("Commande invalide.");
                     break;

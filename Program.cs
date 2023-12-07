@@ -1,10 +1,18 @@
 ﻿using ProjetNarratif;
 using ProjetNarratif.Rooms;
+using System.Diagnostics;
+using System.Media;
+using NAudio.Wave;
 
 var game = new Game();
 game.Add(new Bedroom());
 game.Add(new Bathroom());
-game.Add(new AtticRoom());
+game.Add(new Travail());
+game.Add(new salon());
+game.Add(new Cuisine());
+game.Add(new Retourmaison());
+game.Add(new Retourmaisondeux());
+
 
 while (!game.IsGameOver())
 {
@@ -15,5 +23,5 @@ while (!game.IsGameOver())
     game.ReceiveChoice(choice);
 }
 
-Console.WriteLine("FIN");
+Console.WriteLine("À suivre..");
 Console.ReadLine();

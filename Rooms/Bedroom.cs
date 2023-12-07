@@ -1,36 +1,49 @@
-﻿namespace ProjetNarratif.Rooms
+﻿using System.Media;
+using ProjetNarratif;
+namespace ProjetNarratif.Rooms
 {
     internal class Bedroom : Room
     {
+        internal static bool ifhabiller;
         internal override string CreateDescription() =>
-@"Tu es dans ta chambre à dormir.
-La [porte] qui mène au salon est devant toi.
-Ta [toilette] privée est à ta gauche.
-Dans ton armoire, tu aperçois le [grenier]
+@"Tu te réveil au au petit matin en sueur pour une raison que t'ignore.
+Bien heureusement tu as ta douce femme Monica à côté de toi. 
+Tu décides d'aller dans les [toilettes].
+Tu décides d'[enlacer] ta femme.
+Tu décides de t'[habiller].
+Tu décides d'aller au [salon].
 ";
-
-        internal override void  ReceiveChoice(string choice)
+        internal override void ReceiveChoice(string choice)
         {
             switch (choice)
             {
-                case "toilette":
-                    Console.WriteLine("Tu entres dans la toilette.");
+                case "toilettes":
+                    Console.WriteLine("Tu entres dans la salle de bain.");
                     Game.Transition<Bathroom>();
                     break;
-                case "porte":
-                    if (!AtticRoom.isKeyCollected)
+
+                case "salon":
+                    if (ifhabiller == false)
                     {
-                        Console.WriteLine("La porte est verrouillée.");
+                        Console.WriteLine("Monica : chéri habille toi avant.");
                     }
                     else
                     {
-                        Console.WriteLine("Tu ouvres la porte avec ta clé et tu sors de ta chambre.");
-                        Game.Finish();
+                        Console.WriteLine("Tu vas au salon.");
+                        Game.Transition<salon>();
                     }
                     break;
-                case "grenier":
-                    Console.WriteLine("Tu montes dans le grenier.");
-                    Game.Transition<AtticRoom>();
+
+                case "enlacer":
+                    Console.WriteLine("Monica : Tu es déjà en retard mon amour il va falloir y'aller.");
+                    break;
+
+                case "habiller":
+                    Console.WriteLine("Tu t'habilles avec ton costumes pour aller au travail.\n" +
+                        "Toi : Alors je suis comment ?.\n" +
+                        "Monica : Beau comme d'habitude mon amour. ");
+                    ifhabiller = true;
+
                     break;
                 default:
                     Console.WriteLine("Commande invalide.");
